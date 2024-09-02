@@ -1,11 +1,10 @@
-# TEST
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Циклический слайдер</title>
+    <title>Циклический слайдер с пагинацией</title>
     <style>
         body {
             margin: 0;
@@ -54,22 +53,29 @@
 
         .pagination {
             position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            transform: translateY(-50%);
             display: none;
         }
 
-        .pagination .arrow {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: #333;
+        .arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
             text-align: center;
-            line-height: 20px;
-            border-radius: 50%;
+            line-height: 200px;
             cursor: pointer;
+        }
+
+        .arrow.left {
+            left: -30px;
+        }
+
+        .arrow.right {
+            right: -30px;
         }
     </style>
 </head>
@@ -80,16 +86,16 @@
         <div class="slide active">Slide 1</div>
         <div class="slide slide-next">Slide 2</div>
         <div class="pagination">
-            <div class="arrow prev">&#8249;</div>
-            <div class="arrow next">&#8250;</div>
+            <div class="arrow left">&#8249;</div>
+            <div class="arrow right">&#8250;</div>
         </div>
     </div>
 
     <script>
         const slider = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.querySelector('.arrow.prev');
-        const nextBtn = document.querySelector('.arrow.next');
+        const prevBtn = document.querySelector('.arrow.left');
+        const nextBtn = document.querySelector('.arrow.right');
 
         let currentSlide = 0;
 
