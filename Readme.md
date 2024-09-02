@@ -71,11 +71,11 @@
         }
 
         .arrow.left {
-            left: -30px;
+            left: 0;
         }
 
         .arrow.right {
-            right: -30px;
+            right: 0;
         }
     </style>
 </head>
@@ -97,11 +97,12 @@
         const prevBtn = document.querySelector('.arrow.left');
         const nextBtn = document.querySelector('.arrow.right');
 
-        let currentSlide = 0;
+        let currentSlide = 1;
 
         function showSlide(n) {
+            currentSlide = (n + 3) % 3;
             slides.forEach((slide, index) => {
-                let position = index - n;
+                let position = index - currentSlide;
                 slide.classList.remove('active', 'slide-prev', 'slide-next');
                 if (position === 0) {
                     slide.classList.add('active');
@@ -125,13 +126,11 @@
         });
 
         prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide === 0) ? 2 : currentSlide - 1;
-            showSlide(currentSlide);
+            showSlide(currentSlide - 1);
         });
 
         nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide === 2) ? 0 : currentSlide + 1;
-            showSlide(currentSlide);
+            showSlide(currentSlide + 1);
         });
 
         showSlide(currentSlide);
