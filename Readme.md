@@ -20,8 +20,13 @@
         .controls {
             display: flex;
             justify-content: space-between;
-            width: 100px;
+            width: 440px;
             margin-top: 10px;
+        }
+        .control {
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.3s;
         }
         .disabled {
             opacity: 0.5;
@@ -43,8 +48,8 @@
         </div>
     </div>
     <div class="controls">
-        <button id="prev" class="disabled">Prev</button>
-        <button id="next">Next</button>
+        <img id="prev" class="control disabled" src="prev.svg" alt="Previous">
+        <img id="next" class="control" src="next.svg" alt="Next">
     </div>
 </div>
 
@@ -70,7 +75,7 @@
         } else if (position > items.length - visibleItems) {
             position = items.length - visibleItems;
         }
-        track.style.transform = translateX(-${position * (100 + 10)}px);
+        track.style.transform = `translateX(-${position * (100 + 10)}px)`;
         updateButtons();
     }
 
